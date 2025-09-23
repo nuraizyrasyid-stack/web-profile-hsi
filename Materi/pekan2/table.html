@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tabel HTML Lengkap (Biodata + Transaksi)</title>
+</head>
+<body>
+
+  <h1>HTML 5 TABLE</h1>
+  <p>Ini adalah paragraf pertama saya di HTML.</p>
+
+  <!-- Tabel Biodata sederhana -->
+  <table border="1">
+    <tr>
+      <th>NO</th>
+      <th>NAMA</th>
+      <th>ASAL</th>
+    </tr>
+    <tr>
+      <td>1.</td>
+      <td>Rasyid</td>
+      <td>Banjarnegara</td>
+    </tr>
+    <tr>
+      <td>2.</td>
+      <td>Aisy</td>
+      <td>Purworejo</td>
+    </tr>
+    <tr>
+      <td>3.</td>
+      <td>Bima</td>
+      <td>Magelang</td>
+    </tr>
+    <tr>
+      <td>4.</td>
+      <td>Salsabila</td>
+      <td>Jogja</td>
+    </tr>
+  </table>
+
+  <br><hr><br>
+
+  <h1>HTML 5 TABLE dengan THEAD</h1>
+  <p>Contoh penggunaan <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code>, dan <code>&lt;tfoot&gt;</code> untuk biodata.</p>
+
+  <!-- Tabel Biodata standar -->
+  <table border="1">
+    <thead>
+      <tr>
+        <th>NO</th>
+        <th>NAMA</th>
+        <th>ASAL</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1.</td>
+        <td>Rasyid</td>
+        <td>Banjarnegara</td>
+      </tr>
+      <tr>
+        <td>2.</td>
+        <td>Aisy</td>
+        <td>Purworejo</td>
+      </tr>
+      <tr>
+        <td>3.</td>
+        <td>Bima</td>
+        <td>Magelang</td>
+      </tr>
+      <tr>
+        <td>4.</td>
+        <td>Salsabila</td>
+        <td>Jogja</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="3">Total Data: 4 Santri</td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <br><hr><br>
+
+  <h1>Tabel Transaksi Belanja</h1>
+  <p>Contoh tabel dengan <code>rowspan</code> untuk data belanjaan.</p>
+
+  <!-- Tabel Transaksi Belanja dengan rowspan -->
+  <table border="1">
+    <thead>
+      <tr>
+        <th>No</th>
+        <th>Tanggal</th>
+        <th>Item</th>
+        <th>Jumlah</th>
+        <th>Harga Satuan</th>
+        <th>Total</th>
+        <th>Pembeli</th>
+        <th>Kasir</th>
+        <th>Metode Bayar</th>
+        <th>Keterangan</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- 2 data dengan tanggal sama digabung -->
+      <tr>
+        <td>1</td>
+        <td rowspan="2">23/08/2025</td>
+        <td>Roti Gabin Sari Roti</td>
+        <td>2</td>
+        <td>Rp 2.000</td>
+        <td>Rp 4.000</td>
+        <td>Rasyid</td>
+        <td>Dewi</td>
+        <td>Tunai</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <!-- tanggal digabung dengan atas -->
+        <td>Susu Ultra Milk</td>
+        <td>1</td>
+        <td>Rp 6.000</td>
+        <td>Rp 6.000</td>
+        <td>Aisy</td>
+        <td>Dewi</td>
+        <td>QRIS</td>
+        <td>-</td>
+      </tr>
+      <!-- data lain tetap biasa -->
+      <tr>
+        <td>3</td>
+        <td>24/08/2025</td>
+        <td>Indomie Goreng</td>
+        <td>5</td>
+        <td>Rp 3.000</td>
+        <td>Rp 15.000</td>
+        <td>Bima</td>
+        <td>Siti</td>
+        <td>QRIS</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>25/08/2025</td>
+        <td>Air Mineral Aqua</td>
+        <td>3</td>
+        <td>Rp 2.500</td>
+        <td>Rp 7.500</td>
+        <td>Salsabila</td>
+        <td>Siti</td>
+        <td>Tunai</td>
+        <td>-</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="10">Total Data: 4 Transaksi</td>
+      </tr>
+    </tfoot>
+  </table>
+
+</body>
+</html>
