@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FORM HTML 5</title>
+  <style>
+    /* Reset sederhana */
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f9;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    /* Card form */
+    .form-container {
+      background: white;
+      padding: 20px 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      width: 350px;
+    }
+
+    .form-container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    /* Input & label */
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    input:focus {
+      border-color: #007bff;
+      outline: none;
+      box-shadow: 0 0 4px rgba(0,123,255,0.5);
+    }
+
+    /* Tombol */
+    button {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      background: #007bff;
+      color: white;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+
+    /* Pesan validasi */
+    .error {
+      color: red;
+      font-size: 12px;
+      margin-top: 5px;
+    }
+
+    .success {
+      color: green;
+      text-align: center;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Formulir Pendaftaran</h2>
+    <form id="daftarForm">
+      <div class="form-group">
+        <label for="nama">Nama Lengkap:</label>
+        <input type="text" id="nama" name="nama" placeholder="Masukkan nama" required>
+        <div class="error" id="errorNama"></div>
+      </div>
+
+      <div class="form-group">
+        <label for="umur">Umur:</label>
+        <input type="number" id="umur" name="umur" placeholder="Masukkan umur" required>
+        <div class="error" id="errorUmur"></div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="nama@contoh.com" required>
+        <div class="error" id="errorEmail"></div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" placeholder="Minimal 6 karakter" required>
+        <div class="error" id="errorPassword"></div>
+      </div>
+
+      <button type="submit">Daftar</button>
+      <div class="success" id="successMsg"></div>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById('daftarForm');
+    const errorNama = document.getElementById('errorNama');
+    const errorUmur = document.getElementById('errorUmur');
+    const errorEmail = document.getElementById('errorEmail');
+    const errorPassword = document.getElementById('errorPassword');
+    const successMsg = document.getElementById('successMsg');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      let valid = true;
+
+      // Reset pesan
+      errorNama.textContent = '';
+      errorUmur.textContent = '';
+      errorEmail.textContent = '';
+      errorPassword.textContent = '';
+      successMsg.textContent = '';
+
+      // Validasi Nama
+      const nama = form.nama.value.trim();
+      if (nama.length < 3) {
+        errorNama.textContent = 'Nama minimal 3 huruf';
+        valid = false;
+      }
+
+      // Validasi Umur
+      const umur = parseInt(form.umur.value);
+      if (isNaN(umur) || umur < 5 || umur > 100) {
+        errorUmur.textContent = 'Umur harus antara 5 - 100 tahun';
+        valid = false;
+      }
+
+      // Validasi Email
+      const email = form.email.value.trim();
+      const emailPattern = /^[^ ]+@[^ ]+\\.[a-z]{2,3}$/;
+      if (!emailPattern.test(email)) {
+        errorEmail.textContent = 'Email tidak valid';
+        valid = false;
+      }
+
+      // Validasi Password
+      const password = form.password.value;
+      if (password.length < 6) {
+        errorPassword.textContent = 'Password minimal 6 karakter';
+        valid = false;
+      }
+
+      // Jika semua valid
+      if (valid) {
+        successMsg.textContent = 'Pendaftaran berhasil!';
+        form.reset();
+      }
+    });
+  </script>
+</body>
+</html>
