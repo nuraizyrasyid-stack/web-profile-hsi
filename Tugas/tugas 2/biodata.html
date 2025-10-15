@@ -5,111 +5,66 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Biodata Santri</title>
   <link rel="stylesheet" href="style.css">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color :#f7f8fc;
-      margin:0;
-      padding: 0;
-      
-      
-    }
-    header {
-      background-color: #3bf6f3;
-      text-align: center;
-      padding: 20px;
-    }
-    header h1 {
-    
-      color: #2c3e50;
-    }
-    header polygon {
-      color: #555555;
-    }
-    .container {
-      max-width: 800px;
-      margin: 20px auto;
-      padding: 10px;
-    }
-    .box {
-      background: #ffffff;
-      border-radius: 8px;
-      padding: 20px;
-      margin-bottom: 15px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-      border-left: 5px solid #3b82f6;
-    }
-    .box h3 {
-      margin-top: 0;
-      color: #491eaf;
-    }
-    .box img {
-      width: 135px;
-      height: 122px;
-      border-radius: 50%;
-      display: block;
-      margin-bottom: 15px;
-    }
-    footer {
-      text-align: center;
-      padding: 20px;
-    }
-    footer a {
-      color: #2574eb;
-      text-decoration: none;
-    }
-    footer a:hover {
-      text-decoration: underline;
-    }
-  </style>
 </head>
 <body>
-  <header>
-    <h1>Biodata Santri</h1>
-    <p>Kelas 10 A — Asrama Ibnul Qayyim</p>
-  </header>
+  <main class="container">
+    <h1 class="judul-utama">Biodata Santri</h1>
+    <p class="subjudul">Kelas 10A — Asrama Ibnul Qayyim</p>
 
-  <div class="container">
+    <nav class="navigasi">
+      <a href="#" class="active">Beranda</a>
+      <a href="#">Biodata</a>
+      <a href="#">Jadwal</a>
+      <a href="#">Galeri</a>
+      <a href="#">Feedback</a>
+    </nav>
 
-    <section class="box">
-      <h3>Biodata Singkat</h3>
-      <img src="image/foto profile.jpg" alt="Foto Profil">
-      <p>Assalamualaikum! Saya adalah siswa HSI Boarding School Purworejo. 
-      Saya menyukai belajar teknologi dan bahasa saya ingin menjadi pribadi yang selalu memberi manfaat. 
-      Saat ini saya sedang belajar membuat website sederhana dengan mempelajari HTML & CSS .</p>
-    </section>
+    <!-- BIODATA SINGKAT -->
+    <article class="card">
+      <h3 class="judul-card">Biodata Singkat</h3>
+      <div class="isi-card">
+        <img src="image/foto asrama.jpg" alt="Foto Santri" class="avatar">
+        <p>
+          Assalamu'alaikum! Saya adalah siswa HSI Boarding School Purworejo.<br>
+          Saya menyukai belajar teknologi dan ingin menjadi pribadi yang selalu menebar manfaat.<br>
+          Saat ini saya sedang belajar materi HTML & CSS dasar untuk membuat website sederhana.
+        </p>
+      </div>
+    </article>
 
-    <section class="box">
-      <h3>Hobi</h3>
+    <!-- HOBI -->
+    <article class="card">
+      <h3 class="judul-card">Hobi</h3>
       <ul>
         <li>Ngoding</li>
-        <li>petualangan</li>
-        <li>Olahraga lari main bola</li>
+        <li>Membaca</li>
+        <li>Olahraga Lari dan Berenang</li>
       </ul>
-    </section>
+    </article>
 
-    <section class="box">
-      <h3>Cita-cita</h3>
+    <!-- CITA-CITA -->
+    <article class="card">
+      <h3 class="judul-card">Cita-cita</h3>
       <ol>
         <li>Programmer</li>
-        <li>penghafal al qur'an</li>
-        <li>kuliah di luar negeri</li>
-        <li>guru di perkuliahan tinggi</li>
+        <li>Founder Startup</li>
+        <li>Ethical Hacker</li>
+        <li>Kontributor Proyek Open-Source</li>
       </ol>
-    </section>
+    </article>
 
-    <section class="box">
-      <h3>Kontak</h3>
-      <p>Whatsapp: <b>083160891392</b></p>
-      <p>Telegram: @nuraizyrasyid</p>
-      <p>Instagram: <a href="https://instagram.com/nuraizyrasyid" target="_blank">instagram.com/nuraizyrasyid</a></p>
-      <p>Email: nuraizyrasyid@gmail.com</p>
-    </section>
-
-  </div>
+    <!-- KONTAK -->
+    <article class="card">
+      <h3 class="judul-card">Kontak</h3>
+      <p>Whatsapp: 0851-1234-4567</p>
+      <p>Telegram: <a href="#">@ujangskuy</a></p>
+      <p>Instagram: <a href="#">@ujangskuy</a></p>
+      <p>Email: <a href="mailto:ujang.skuv@gmail.com">ujang.skuv@gmail.com</a></p>
+    </article>
+  </main>
 
   <footer>
-    <p><a href="index.html">⬅ Kembali ke Halaman Utama</a></p>
+    <p>© 2025 Biodata Santri | Dibuat oleh Rasyid Nur Aisy</p>
   </footer>
 </body>
 </html>

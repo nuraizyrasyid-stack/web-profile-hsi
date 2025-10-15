@@ -1,0 +1,42 @@
+.card {
+    background: #f9f9f9;
+    text-align: center;
+    height: 240px;
+    width: 250px;
+    line-height: 12;
+    border: 2px dashed #333;
+    border-radius: 6px;
+}
+
+
+#box-a{
+    width: 200px;
+    height: 200px;
+    background: forestgreen;
+}
+
+#box-a  {
+    width: 200px;
+    height: 200px;
+    background: yellow;
+    padding: 10px;
+    
+}
+
+#box-c {
+    width: 200px;
+    height: 200px;
+    background: orange;
+    padding: 10px;
+    border: 5px solid red;
+    
+}
+
+#box-d {
+    width: 200px;
+    height: 200px;
+    background: orange;
+    padding: 10px;
+    border: 5px solid red;
+    margin: 20px;
+}

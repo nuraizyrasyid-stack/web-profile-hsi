@@ -1,0 +1,36 @@
+.container {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* posisi vertikal */
+    align-items: center;      /* posisi horizontal */
+    width: 100%;
+    height: 100vh;            /* supaya tinggi container = tinggi layar */
+    background-color: rgb(72, 145, 78);
+}
+
+
+h1 {
+    color: rgb(118, 14, 229);
+    font-size: 40px;
+    font-family: "fontsaya", sans-serif; /* ganti ke font custom kamu */
+}
+
+h2 {
+    font-weight: bold;
+}
+
+.paragraph {
+    width: 40%;
+    background-color: rgb(182, 162, 182);
+    text-align: center;
+    text-transform: capitalize; /* huruf pertama di setiap kata jadi kapital */
+    line-height: 2.3; /* spasi antar baris */
+    letter-spacing: 2px; /* spasi antar huruf */
+    margin: 20px auto; /* biar paragraf di tengah */
+}
+
+@font-face {
+    font-family: "fontsaya";
+    src: url("fontsaya.ttf") format("truetype");
+}
