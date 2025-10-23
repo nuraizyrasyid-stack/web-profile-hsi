@@ -89,7 +89,7 @@ body {
 
 /* ========== CARD ========== */
 .index-card {
-  background-color: #fff;
+  background-color: #ffffff;
   border-radius: 12px;
   padding: 25px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
@@ -98,7 +98,7 @@ body {
 .index-card-title {
   font-size: 18px;
   margin-bottom: 10px;
-  color: #333;
+  color: #111827;
   font-weight: 600;
   border-left: 4px solid #f2c94c;
   padding-left: 10px;
@@ -147,7 +147,7 @@ body {
 .bio-content {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 20px; /* memberi jarak antara gambar dan teks */
 }
 
 .bio-img {
@@ -156,6 +156,7 @@ body {
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid #2563eb;
+  margin-bottom: 15px;
 }
 
 /* FOOTER */
@@ -179,94 +180,116 @@ footer p {
 
 /* ============ STYLE FEEDBACK ============ */
 
-
 /* MAIN FORM */
+/* Bagian utama form, menentukan lebar dan posisi tengah */
 .main-feedback {
-  width: 80%;
-  max-width: 700px;
-  margin: 0 auto 60px;
+  width: 80%;                                   /* lebar form 80% dari layar */
+  max-width: 700px;                            /* lebar maksimal 700px biar tidak terlalu lebar di layar besar */
+  margin: 0 auto 60px;                        /* atas=0, kanan-kiri auto (tengah), bawah=60px */
 }
+
+ /* Kartu pembungkus form */
 .form-card-feedback {
-  background: #fff;
-  padding: 25px 30px;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  background: #ece5e5;                          /* warna latar putih */
+  padding: 25px 30px;                             /* jarak isi ke tepi */
+  border-radius: 12px;                            /* sudut membulat */
+  box-shadow: 0 4px 10px rgba(224, 39, 39, 0.05); /* bayangan lembut */
 }
+/* Judul form (h3 di dalam card) */
 .form-card-feedback h3 {
-  color: #1e40af;
-  margin-bottom: 10px;
-  border-left: 4px solid #fbbf24;
-  padding-left: 8px;
+  color: #2950d1;                                             /* warna teks biru tua */
+  margin-bottom: 10px;                                         /* jarak bawah judul */
+  border-left: 4px solid #fbbf24;              /* garis di sisi kiri judul berwarna kuning */
+  padding-left: 8px;                            /* jarak antara teks dan garis kiri */
 }
+/* Paragraf penjelas di dalam form */
 .form-card-feedback p {
-  color: #4b5563;
-  margin-bottom: 20px;
+  color: #535d6c;                           /* warna abu-abu sedang */
+  margin-bottom: 20px;                         /* jarak bawah agar tidak menempel dengan elemen lain */
 }
+
 
 /* FORM STYLE */
+/* Label di atas setiap input */
 form label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-  color: #1f2937;
+  display:block ;                     /* tampil di baris baru (bukan sejajar) */
+  margin-bottom: 5px;                  /* jarak ke bawah sebelum input */
+  font-weight: bold;                    /* teks label tebal */
+  color: #1f2937;                        /* warna teks abu tua */
 }
+
+ /* Input, select, textarea — semua gaya seragam */
 form input,
 form select,
 form textarea {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #d1d5db;
-  border-radius: 8px;
-  margin-bottom: 15px;
-  font-size: 15px;
-  outline: none;
-  transition: 0.2s;
+  width: 100%;                                     /* lebar penuh mengikuti container */
+  padding: 10px;                                  /* ruang di dalam input */
+  border: 1px solid #d1d5db;                      /* garis pinggir abu terang */
+  border-radius: 8px;                                                         /* ujung membulat */
+  margin-bottom: 15px;                        /* jarak antar elemen form */
+  font-size: 15px;                        /* ukuran teks */
+  outline: none;                            /* hilangkan garis biru default saat diklik */
+  transition: 0.2s;                      /* animasi halus saat fokus */
 }
+
+/* Efek saat input, select, textarea diklik (focus) */
 form input:focus,
 form select:focus,
 form textarea:focus {
-  border-color: #1e40af;
-  box-shadow: 0 0 5px rgba(30, 64, 175, 0.2);
+  border-color: #1e40af;                     /* ubah warna border jadi biru */
+  box-shadow: 0 0 5px rgba(30, 64, 175, 0.2); /* efek cahaya biru lembut */
 }
+
 
 /* GROUPS */
+/* Untuk mengatur label pada radio dan checkbox agar sejajar */
 .radio-group label,
 .checkbox-group label {
-  display: inline-block;
-  margin-right: 15px;
-  font-weight: normal;
+  display: inline-block;                           /* sejajar dalam satu baris */
+  margin-right: 15px;                                /* jarak antar label */
+  font-weight: normal;                                 /* teks normal (tidak tebal) */
 }
+
 
 /* BUTTONS */
+/* Mengatur posisi tombol di sisi kanan */
 .button-group {
-  text-align: right;
+  text-align: right;                        /* tombol sejajar ke kanan */
 }
+
+/* Gaya umum untuk tombol reset dan submit */
 .btn-reset,
 .btn-submit {
-  padding: 10px 18px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 15px;
-  transition: 0.3s;
+  padding: 10px 18px;                    /* ruang dalam tombol */
+  border: none;                          /* hilangkan garis pinggir */
+  border-radius: 8px;                    /* ujung membulat */
+  cursor: pointer;                       /* ubah kursor jadi tangan saat diarahkan */
+  font-size: 15px;                          /* ukuran teks tombol */
+  transition: 0.3s;                       /* animasi halus saat hover */
 }
+
+/* Tombol reset */
 .btn-reset {
-  background: #e5e7eb;
-  color: #333;
+  background: #f1edeb;                       /* latar abu terang */
+  color: #e11414;                     
+  margin: 15px 20px                               /* teks abu tua */
 }
+
+/* Efek hover pada tombol reset */
 .btn-reset:hover {
-  background: #d1d5db;
+  background: #d1d5db;                              /* ubah abu jadi sedikit lebih gelap */
 }
+
+/* Tombol submit */
 .btn-submit {
-  background: #1e40af;
-  color: white;
+  background: #1e40af;                            /* latar biru tua */
+  color: white;                                     /* teks putih */
 }
-.btn-submit:hover {
-  background: #1d4ed8;
 
-
-
-
+/* Efek hover pada tombol submit */
+.b-submit:hover {
+  background: #1d4ed8;  
+  color: #5a7abe;                               /* warna biru sedikit lebih terang */
 }
 
 
@@ -341,7 +364,7 @@ form textarea:focus {
   background-color: #ffffff;
   width: 85%;
   max-width: 850px;
-  margin: 0 auto;
+  margin: 45 auto;
   padding: 25px 30px;
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);

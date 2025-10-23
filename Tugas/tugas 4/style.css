@@ -1,0 +1,109 @@
+/* Mengimpor font lokal */
+@font-face {
+  font-family: 'BismillahScript';
+  src: url('fonts/BismillahScript.ttf') format('truetype');
+}
+
+/* Umum */
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f4f5f6;
+  margin: 0;
+  padding: 0;
+  line-height: 1.8;
+  color: #333;
+}
+
+/* HEADER */
+.bagian-header {
+  text-align: center;
+  background-color: #080e0f;
+  color: #25d542;
+  padding: 40px 20px;
+  border-radius: 15px 15px;
+}
+
+.bagian-header h1 {
+  font-size: 32px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  margin-bottom: 10px;
+}
+
+.bagian-header p {
+  font-size: 16px;
+  font-style: italic;
+}
+
+/* MAIN */
+.bagian-utama {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+/* Artikel */
+.isi-dari {
+  background-color: #050f12;
+  padding: 25px 30px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.tex-penting {
+  font-size: 22px;
+  color: #4ce81d;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.isi-dari p {
+  text-align: justify;
+  margin-bottom: 20px;
+  color: #eef2ff;
+}
+
+/* QUOTE */
+blockquote {
+  font-style: italic;
+  font-size: 18px;
+  color: #1e3a8a;
+  background-color: #eef2ff;
+  border-left: 5px solid #3b82f6;
+  margin: 30px 0;
+  padding: 15px 25px;
+  border-radius: 8px;
+}
+
+/* NOTE */
+.note {
+  background-color: #fff7ed;
+  border-left: 5px solid #f97316;
+  padding: 15px 20px;
+  font-size: 15px;
+  color: #9a3412;
+  border-radius: 8px;
+  margin-bottom: 40px;
+}
+
+/* FOOTER */
+footer {
+  text-align: right;
+  padding: 20px 40px;
+  background-color: #f9fafb;
+  border-top: 1px solid #ddd;
+}
+
+.penulis {
+  margin: 0;
+  color: #031008;
+  font-size: 15px;
+}
+
+.signature {
+  font-family: 'BismillahScript', cursive;
+  font-size: 24px;
+  color: #b91c1c;
+  letter-spacing: 2px;
+  margin-top: 5px;
+}
