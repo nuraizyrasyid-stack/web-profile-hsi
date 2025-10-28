@@ -1,15 +1,698 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Website Belajar</title>
-  <!-- hubungkan ke CSS -->
-  <link rel="stylesheet" href="css/style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Belajar JavaScript — Super Interaktif (Rasyid)</title>
+  <style>
+    /* ========== GAYA UMUM ========== */
+    :root{
+      --bg1: #0f1724;
+      --accent1: #7b61ff; /* ungu */
+      --accent2: #00c2ff; /* cyan */
+      --accent3: #ff6fa3; /* pink */
+      --glass: rgba(255,255,255,0.06);
+      --glass-2: rgba(255,255,255,0.08);
+      --glass-3: rgba(255,255,255,0.03);
+      --card-shadow: 0 8px 24px rgba(2,6,23,0.6);
+      --glass-border: rgba(255,255,255,0.06);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%; margin:0; font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+      background: linear-gradient(135deg,var(--bg1), #09203f 45%); color:#e9eef8;}
+    a{color:inherit}
+    header{
+      padding:24px;
+      display:flex;
+      gap:16px;
+      align-items:center;
+      justify-content:space-between;
+      background: linear-gradient(90deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      border-bottom:1px solid rgba(255,255,255,0.03);
+      position:sticky; top:0; z-index:40;
+    }
+    .brand{
+      display:flex; gap:12px; align-items:center;
+    }
+    .logo{
+      width:56px; height:56px; border-radius:12px;
+      background: linear-gradient(135deg,var(--accent1),var(--accent2));
+      display:flex; align-items:center; justify-content:center; font-weight:700;
+      box-shadow: 0 6px 18px rgba(123,97,255,0.25), inset 0 -6px 18px rgba(255,255,255,0.06);
+    }
+    .title{font-size:18px; font-weight:700}
+    .subtitle{font-size:12px; opacity:0.9; margin-top:2px}
+
+    main{ max-width:1200px; margin:28px auto; padding:24px; }
+
+    .grid{
+      display:grid; gap:20px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border: 1px solid var(--glass-border);
+      border-radius:14px; padding:18px; box-shadow:var(--card-shadow);
+      transition: transform .28s ease, box-shadow .28s ease;
+      position:relative; overflow:hidden;
+    }
+    .card:hover{ transform: translateY(-6px); box-shadow: 0 18px 48px rgba(2,6,23,0.72); }
+
+    h2{ margin:0 0 10px 0; font-size:16px; }
+    p { margin:0 0 12px 0; color: #dbe8ff; opacity:0.95; font-size:13px; }
+
+    .kbtn{
+      display:inline-flex; gap:8px; align-items:center;
+      background: linear-gradient(90deg,var(--accent1),var(--accent2));
+      color:#011; padding:8px 12px; border-radius:10px; border:none; cursor:pointer; font-weight:700;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.45), 0 1px 0 rgba(255,255,255,0.02) inset;
+      transition: transform .12s ease;
+    }
+    .kbtn:hover{ transform: translateY(-3px); }
+    .muted-btn{ background:transparent; border:1px solid rgba(255,255,255,0.06); color:#dbe8ff; padding:7px 10px; border-radius:8px; cursor:pointer }
+
+    input[type="number"], input[type="text"], select {
+      width:100%; padding:10px; border-radius:8px; border:1px solid rgba(255,255,255,0.06);
+      background: rgba(255,255,255,0.02); color:#eaf2ff; margin-top:8px;
+    }
+
+    .hasil{
+      margin-top:12px; padding:12px; border-radius:8px; background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      min-height:36px; color:#ffffff;
+      font-weight:700;
+    }
+
+    .small{ font-size:12px; opacity:0.9; }
+
+    /* Animations utility */
+    .fadein { animation: fadeIn .6s ease both; }
+    @keyframes fadeIn{ from { opacity:0; transform: translateY(8px);} to {opacity:1; transform:none;} }
+
+    .fadeout { animation: fadeOut .6s ease both; }
+    @keyframes fadeOut{ from { opacity:1 } to { opacity:0 } }
+
+    /* popup area for interactive console-like output */
+    .console {
+      background: rgba(0,0,0,0.35); border-radius:8px; padding:10px; font-family: monospace; color:#bfe8ff; font-size:13px;
+      max-height:180px; overflow:auto;
+    }
+
+    /* top controls */
+    .controls{ display:flex; gap:10px; align-items:center; justify-content:flex-end}
+    .chip{ padding:6px 10px; border-radius:999px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.03); font-size:13px }
+
+    footer{ text-align:center; padding:18px; color:#cfe8ff; opacity:0.9; margin-top:28px; font-size:13px;}
+
+    /* responsive adjustments */
+    @media (max-width:640px){
+      header{ flex-direction:column; align-items:flex-start; gap:8px }
+    }
+
+    /* fancy floating badge */
+    .badge{
+      position: absolute; right:12px; top:12px; padding:8px 12px; border-radius:12px;
+      background: linear-gradient(90deg,var(--accent3),var(--accent1)); color:#041; font-weight:800; transform: rotate(-6deg);
+      box-shadow: 0 6px 20px rgba(123,97,255,0.18);
+      font-size:12px;
+    }
+
+    /* glow on clickable example lines */
+    .glow {
+      display:inline-block; padding:6px 10px; border-radius:8px; background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border:1px solid rgba(255,255,255,0.03);
+    }
+
+  </style>
 </head>
 <body>
-  <h1>Halo Dunia!</h1>
-  <p>Ini paragraf pertama.</p>
-  <img src="images/avatar.jpg" alt="Foto Profil" width="150">
+  <header>
+    <div class="brand">
+      <div class="logo">JS</div>
+      <div>
+        <div class="title">Belajar JavaScript — Super Interaktif</div>
+        <div class="subtitle">Semua fitur + animasi — dibuat untuk Rasyid</div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <div class="chip" id="clock">--:--:--</div>
+      <button class="muted-btn" onclick="openHelp()">Cara Pakai</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- GRID UTAMA -->
+    <div class="grid">
+
+      <!-- 1. Alert / Prompt / Console -->
+      <div class="card fadein">
+        <div class="badge">Dasar</div>
+        <h2>Alert, Prompt & Console</h2>
+        <p>Contoh `alert()`, `prompt()` dan `console.log()` — gunakan untuk menampilkan pesan dan menerima input sederhana.</p>
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+          <button class="kbtn" onclick="demoAlert()">Try Alert</button>
+          <button class="kbtn" onclick="demoPrompt()">Try Prompt</button>
+          <button class="kbtn" onclick="demoConsole()">Console.log</button>
+        </div>
+        <div class="hasil small">
+          Pesan console (bisa dilihat di console browser) |
+          <span class="glow" style="cursor:pointer" onclick="openConsoleTab()">Buka DevTools (F12)</span>
+        </div>
+        <div class="console" id="consoleArea" aria-live="polite"></div>
+      </div>
+
+      <!-- 2. Variabel & Tipe Data -->
+      <div class="card fadein">
+        <h2>Variabel: let, const, var</h2>
+        <p>Pelajari perbedaan `let`, `const`, dan `var`. Coba ubah nilai di contoh.</p>
+        <button class="kbtn" onclick="variabelContoh()">Tampilkan Variabel</button>
+        <div class="hasil" id="hasilVar"></div>
+        <p class="small">Catatan: `const` tidak dapat diubah; `let` bisa diubah; `var` adalah cara lama.</p>
+      </div>
+
+      <!-- 3. Operator Perbandingan & Logika -->
+      <div class="card fadein">
+        <h2>Operator Perbandingan & Logika</h2>
+        <p>Cek perbandingan dan gabungkan kondisi dengan <code>&&</code> / <code>||</code> / <code>!</code>.</p>
+        <button class="kbtn" onclick="cekPerbandingan()">Coba Perbandingan</button>
+        <div class="hasil" id="hasilOp"></div>
+      </div>
+
+      <!-- 4. If / Else -->
+      <div class="card fadein">
+        <h2>Struktur If...Else</h2>
+        <p>Masukkan nilai siswa dan lihat kategori nilai (A - E).</p>
+        <input type="number" id="inputNilai" placeholder="Masukkan nilai (0-100)">
+        <div style="margin-top:10px;">
+          <button class="kbtn" onclick="cekIfElse()">Cek Nilai</button>
+          <button class="muted-btn" onclick="cekIfElseExample()">Contoh Otomatis (85)</button>
+        </div>
+        <div class="hasil" id="hasilIf"></div>
+      </div>
+
+      <!-- 5. Looping (for / while) -->
+      <div class="card fadein">
+        <h2>Looping: for & while</h2>
+        <p>Menjalankan perintah berulang-ulang menggunakan loop.</p>
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+          <button class="kbtn" onclick="demoFor()">for (1..8)</button>
+          <button class="kbtn" onclick="demoWhile()">while (1..5)</button>
+          <button class="muted-btn" onclick="demoRange()">range(1,6) concept</button>
+        </div>
+        <div class="hasil" id="hasilLooping"></div>
+      </div>
+
+      <!-- 6. Array & Array Methods -->
+      <div class="card fadein">
+        <h2>Array & Perulangan Data</h2>
+        <p>Buat daftar, tambahkan item, dan perlihatkan menggunakan loop.</p>
+        <input type="text" id="namaTeman" placeholder="Tambahkan nama teman lalu tekan Tambah">
+        <div style="margin-top:8px;">
+          <button class="kbtn" onclick="tambahTeman()">Tambah</button>
+          <button class="muted-btn" onclick="tampilTeman()">Tampilkan Daftar</button>
+        </div>
+        <div class="hasil" id="hasilArrayList"></div>
+      </div>
+
+      <!-- 7. Function -->
+      <div class="card fadein">
+        <h2>Fungsi (Function)</h2>
+        <p>Buat fungsi untuk menghitung luas dan gunakan kembali kapan saja.</p>
+        <input type="number" id="sisiInput" placeholder="Masukkan sisi (angka)">
+        <div style="margin-top:8px;">
+          <button class="kbtn" onclick="fungsiLuasan()">Hitung Luas</button>
+          <button class="muted-btn" onclick="contohHigherOrder()">Contoh Function (HOF)</button>
+        </div>
+        <div class="hasil" id="hasilFungsi2"></div>
+      </div>
+
+      <!-- 8. Kalkulator Interaktif -->
+      <div class="card fadein">
+        <h2>Kalkulator Sederhana</h2>
+        <p>Pilih operasi: + - × ÷</p>
+        <input type="number" id="calcA" placeholder="Angka A">
+        <input type="number" id="calcB" placeholder="Angka B">
+        <div style="margin-top:8px;">
+          <button class="kbtn" onclick="calc('+')">+</button>
+          <button class="kbtn" onclick="calc('-')">-</button>
+          <button class="kbtn" onclick="calc('*')">×</button>
+          <button class="kbtn" onclick="calc('/')">÷</button>
+        </div>
+        <div class="hasil" id="hasilCalc"></div>
+      </div>
+
+      <!-- 9. TeBak Angka (Game) -->
+      <div class="card fadein">
+        <h2>Game: Tebak Angka</h2>
+        <p>Tebak angka antara 1 sampai 20. Coba beberapa kali — ada petunjuk.</p>
+        <input type="number" id="gameGuess" placeholder="Tebakan (1-20)">
+        <div style="margin-top:8px;">
+          <button class="kbtn" onclick="submitGuess()">Tebak!</button>
+          <button class="muted-btn" onclick="resetGame()">Reset Game</button>
+        </div>
+        <div class="hasil" id="hasilGame"></div>
+        <p class="small">Skor & riwayat akan tersimpan sementara (session).</p>
+      </div>
+
+      <!-- 10. DOM Manipulation (hilang - muncul) -->
+      <div class="card fadein">
+        <h2>Efek Hilang → Muncul (Fade) & Animasi</h2>
+        <p>Klik tombol untuk menyembunyikan/memunculkan sebuah card (dengan efek).</p>
+        <div style="display:flex; gap:8px;">
+          <button class="kbtn" onclick="toggleCard()">Hilang / Muncul</button>
+          <button class="muted-btn" onclick="pulseCard()">Pulse</button>
+        </div>
+        <div class="hasil" id="hasilDom"></div>
+        <div id="targetCard" style="margin-top:12px; padding:12px; border-radius:10px; background:rgba(255,255,255,0.03);">
+          Ini adalah elemen target — akan hilang dan muncul dengan animasi.
+        </div>
+      </div>
+
+      <!-- 11. LocalStorage (simpan nama) -->
+      <div class="card fadein">
+        <h2>Simpan Nama (localStorage)</h2>
+        <p>Simpan nama pengguna di browser supaya tetap ada walau reload.</p>
+        <input type="text" id="saveName" placeholder="Masukkan nama...">
+        <div style="margin-top:8px;">
+          <button class="kbtn" onclick="saveName()">Simpan</button>
+          <button class="muted-btn" onclick="loadName()">Tampilkan</button>
+          <button class="muted-btn" onclick="removeName()">Hapus</button>
+        </div>
+        <div class="hasil" id="hasilLS"></div>
+      </div>
+
+      <!-- 12. Grafik Sederhana (Canvas) -->
+      <div class="card fadein">
+        <h2>Grafik Nilai (Canvas)</h2>
+        <p>Contoh membuat grafik batang sederhana dari data nilai.</p>
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+          <button class="kbtn" onclick="renderChart()">Tampilkan Grafik</button>
+          <button class="muted-btn" onclick="randomizeChart()">Randomize Data</button>
+        </div>
+        <canvas id="chartCanvas" width="600" height="240" style="max-width:100%; margin-top:12px; border-radius:8px; background:rgba(0,0,0,0.25)"></canvas>
+      </div>
+
+      <!-- 13. Jam Digital -->
+      <div class="card fadein">
+        <h2>Jam Digital</h2>
+        <p>Jam real-time di header & di sini juga.</p>
+        <div class="hasil" id="displayClock"></div>
+      </div>
+
+      <!-- 14. Sound / Click Effects -->
+      <div class="card fadein">
+        <h2>Efek Suara (Web Audio)</h2>
+        <p>Uji suara klik: gunakan Web Audio API — tidak memerlukan file eksternal.</p>
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+          <button class="kbtn" onclick="playClickSound()">Play Click</button>
+          <button class="muted-btn" onclick="playBeep()">Play Beep</button>
+        </div>
+        <div class="hasil" id="hasilSound">Suara dibuat dengan WebAudio API</div>
+      </div>
+
+    </div> <!-- akhir grid -->
+
+    <!-- petunjuk / help modal (sederhana) -->
+    <div id="helpModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.6); align-items:center; justify-content:center; padding:20px;">
+      <div style="background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02)); padding:18px; border-radius:12px; max-width:720px; color:#dff6ff">
+        <h3 style="margin-top:0">Cara Pakai — Singkat</h3>
+        <ul>
+          <li>Gunakan tombol di setiap kartu untuk mencoba fitur.</li>
+          <li>Buka <code>DevTools (F12) → Console</code> untuk melihat hasil `console.log`.</li>
+          <li>Simpan file ini sebagai <b>index.html</b> lalu buka di Chrome untuk hasil terbaik.</li>
+        </ul>
+        <div style="text-align:right; margin-top:12px;">
+          <button class="kbtn" onclick="closeHelp()">Tutup</button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <div>✨ Dibuat untuk Rasyid — Semua fitur JavaScript (Interaktif & Modern)</div>
+    <div style="opacity:0.8; font-size:12px; margin-top:6px">Tip: Tekan F12 → Console untuk melihat log</div>
+  </footer>
+
+  <!-- ========== SCRIPT ========== -->
+  <script>
+    /* ========= Helper kecil ========= */
+    function logConsole(msg){
+      const el = document.getElementById('consoleArea');
+      const time = new Date().toLocaleTimeString();
+      el.innerHTML = `<div>[${time}] ${msg}</div>` + el.innerHTML;
+    }
+
+    function openHelp(){ document.getElementById('helpModal').style.display = 'flex'; }
+    function closeHelp(){ document.getElementById('helpModal').style.display = 'none'; }
+    function openConsoleTab(){ alert('Tekan F12 atau Ctrl+Shift+I untuk membuka Developer Tools -> Console'); }
+
+    /* ========= Header Clock ========= */
+    function updateHeaderClock(){
+      const now = new Date();
+      const s = now.toLocaleTimeString();
+      document.getElementById('clock').textContent = s;
+      document.getElementById('displayClock').textContent = s;
+    }
+    setInterval(updateHeaderClock, 1000);
+    updateHeaderClock();
+
+    /* ========= 1. Alert / Prompt / Console ========= */
+    function demoAlert(){
+      logConsole('Menjalankan alert()');
+      alert('Halo, ini contoh alert() — selamat belajar, Rasyid!');
+    }
+    function demoPrompt(){
+      const name = prompt('Siapa namamu?');
+      if(name) {
+        logConsole('Prompt mengembalikan: ' + name);
+        alert('Halo ' + name + '! Prompt berhasil.');
+      } else {
+        logConsole('Prompt dibatalkan atau kosong');
+        alert('Kamu batal mengisi nama.');
+      }
+    }
+    function demoConsole(){
+      console.log('Ini contoh pesan console.log() — lihat DevTools.');
+      logConsole('console.log() dipanggil — buka DevTools (F12)');
+    }
+
+    /* ========= 2. Variabel ========= */
+    function variabelContoh(){
+      // contoh singkat
+      let nama = 'Rasyid';
+      const umur = 16;
+      var hobby = 'Belajar JavaScript';
+
+      // ubah nama
+      nama = nama + ' Nur Aisy';
+
+      document.getElementById('hasilVar').innerHTML = `
+        <div><b>let nama</b> = ${nama}</div>
+        <div><b>const umur</b> = ${umur}</div>
+        <div><b>var hobby</b> = ${hobby}</div>
+        <div style="margin-top:8px; font-size:12px; opacity:0.9;">Catatan: const tidak bisa diubah, let bisa, var juga (sebelumnya)</div>
+      `;
+      logConsole('Menampilkan variabel contoh (let/const/var)');
+    }
+
+    /* ========= 3. Operator Perbandingan & Logika ========= */
+    function cekPerbandingan(){
+      const a = 10, b = '10';
+      const hasil = `
+        10 == '10' → ${a == b} <br>
+        10 === '10' → ${a === b} <br>
+        !(5 > 3) → ${!(5 > 3)} <br>
+        (5 > 3 && 2 < 4) → ${ (5>3 && 2<4) } <br>
+        (5 > 8 || 7 > 2) → ${ (5>8 || 7>2) }
+      `;
+      document.getElementById('hasilOp').innerHTML = hasil;
+      logConsole('Menjalankan cek perbandingan & logika');
+    }
+
+    /* ========= 4. If / Else ========= */
+    function cekIfElse(){
+      const v = Number(document.getElementById('inputNilai').value);
+      if (isNaN(v) || v<0 || v>100){
+        document.getElementById('hasilIf').innerHTML = 'Masukkan nilai valid 0–100';
+        return;
+      }
+      let kategori;
+      if (v >= 90) kategori = 'A (Sangat Baik)';
+      else if (v >= 80) kategori = 'B (Baik)';
+      else if (v >= 70) kategori = 'C (Cukup)';
+      else if (v >= 60) kategori = 'D (Kurang)';
+      else kategori = 'E (Sangat Kurang)';
+
+      document.getElementById('hasilIf').innerHTML = `Nilai: ${v} → ${kategori}`;
+      logConsole('If/Else dieksekusi untuk nilai ' + v + ' => ' + kategori);
+    }
+    function cekIfElseExample(){
+      document.getElementById('inputNilai').value = 85;
+      cekIfElse();
+    }
+
+    /* ========= 5. Looping ========= */
+    function demoFor(){
+      let out = '';
+      for (let i=1;i<=8;i++){
+        out += 'for loop ke-'+i + '<br>';
+      }
+      document.getElementById('hasilLooping').innerHTML = out;
+      logConsole('for loop 1..8 dijalankan');
+    }
+    function demoWhile(){
+      let out = ''; let i = 1;
+      while(i<=5){
+        out += 'while loop ke-'+i + '<br>';
+        i++;
+      }
+      document.getElementById('hasilLooping').innerHTML = out;
+      logConsole('while loop 1..5 dijalankan');
+    }
+    function demoRange(){
+      // Menjelaskan konsep range(1,6) di python
+      let arr = [];
+      for (let i=1;i<6;i++){ arr.push(i); } // stop=6 tidak termasuk
+      document.getElementById('hasilLooping').innerHTML = 'range(1,6) → ' + arr.join(', ');
+      logConsole('Menjelaskan range(1,6) => ' + arr.join(', '));
+    }
+
+    /* ========= 6. Array ========= */
+    let temanList = ['Ali','Budi','Rasyid','Dina','Citra'];
+    function tambahTeman(){
+      const nm = document.getElementById('namaTeman').value.trim();
+      if(!nm){ alert('Isi nama dulu'); return; }
+      temanList.push(nm);
+      document.getElementById('namaTeman').value = '';
+      tampilTeman();
+      logConsole('Tambah teman: ' + nm);
+    }
+    function tampilTeman(){
+      let out = '<ol>';
+      temanList.forEach((t, idx) => { out += `<li>${t}</li>`; });
+      out += '</ol>';
+      document.getElementById('hasilArrayList').innerHTML = out;
+      logConsole('Menampilkan array teman (length=' + temanList.length + ')');
+    }
+
+    /* ========= 7. Function ========= */
+    function fungsiLuasan(){
+      const sisi = Number(document.getElementById('sisiInput').value);
+      if (!sisi){ alert('Masukkan sisi (angka)'); return; }
+      function luas(s){ return s * s; } // fungsi lokal
+      const hasil = luas(sisi);
+      document.getElementById('hasilFungsi2').innerHTML = `Luas persegi sisi ${sisi} = ${hasil}`;
+      logConsole('Fungsi luas dijalankan dengan sisi ' + sisi);
+    }
+    function contohHigherOrder(){
+      // contoh fungsi yang menerima fungsi
+      function pangkat(x){ return x*x; }
+      function applyTwice(fn, val){ return fn(fn(val)); }
+      const res = applyTwice(pangkat, 2); // (2^2)^2 = 16
+      document.getElementById('hasilFungsi2').innerHTML = `HOF: applyTwice(pangkat,2) = ${res}`;
+      logConsole('HOF contoh dijalankan => ' + res);
+    }
+
+    /* ========= 8. Kalkulator ========= */
+    function calc(op){
+      const a = Number(document.getElementById('calcA').value);
+      const b = Number(document.getElementById('calcB').value);
+      if (isNaN(a) || isNaN(b)){ alert('Isi angka valid'); return; }
+      let res;
+      if (op==='+') res = a + b;
+      else if (op==='-') res = a - b;
+      else if (op==='*') res = a * b;
+      else if (op==='/') {
+        if (b===0){ document.getElementById('hasilCalc').innerHTML = 'Tidak bisa bagi 0'; return; }
+        res = a / b;
+      }
+      document.getElementById('hasilCalc').innerHTML = `Hasil: ${res}`;
+      logConsole(`Calc ${a} ${op} ${b} = ${res}`);
+    }
+
+    /* ========= 9. Game Tebak Angka ========= */
+    let secret = Math.floor(Math.random()*20) + 1;
+    let score = 0; let attempts = [];
+    function submitGuess(){
+      const g = Number(document.getElementById('gameGuess').value);
+      if (!g || g<1 || g>20){ alert('Masukkan angka 1-20'); return; }
+      attempts.push(g);
+      if (g === secret){
+        document.getElementById('hasilGame').innerHTML = `🎉 Benar! Angka ${secret} — Tebakanmu: ${attempts.join(', ')} (attempts=${attempts.length})`;
+        score++;
+        logConsole('Game: benar! start new secret');
+        // new round
+        secret = Math.floor(Math.random()*20) + 1;
+        attempts = [];
+      } else if (g < secret){
+        document.getElementById('hasilGame').innerHTML = 'Terlalu kecil!';
+      } else {
+        document.getElementById('hasilGame').innerHTML = 'Terlalu besar!';
+      }
+    }
+    function resetGame(){
+      secret = Math.floor(Math.random()*20) + 1;
+      attempts = []; score = 0;
+      document.getElementById('hasilGame').innerHTML = 'Game di-reset — silakan mulai lagi';
+      logConsole('Game reset');
+    }
+
+    /* ========= 10. DOM Manipulation ========= */
+    function toggleCard(){
+      const t = document.getElementById('targetCard');
+      // fade out/in menggunakan class dan setTimeout
+      t.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      if (t.style.opacity === '0' || t.style.display === 'none'){
+        t.style.display = 'block';
+        setTimeout(()=>{ t.style.opacity = '1'; t.style.transform = 'translateY(0)'; }, 10);
+        document.getElementById('hasilDom').innerHTML = 'Element dimunculkan';
+      } else {
+        t.style.opacity = '0';
+        t.style.transform = 'translateY(-12px)';
+        setTimeout(()=>{ t.style.display = 'none'; }, 620);
+        document.getElementById('hasilDom').innerHTML = 'Element disembunyikan';
+      }
+    }
+    function pulseCard(){
+      const t = document.getElementById('targetCard');
+      t.animate([
+        { transform: 'scale(1)', boxShadow: '0 8px 24px rgba(0,0,0,0.25)' },
+        { transform: 'scale(1.03)', boxShadow: '0 18px 44px rgba(0,0,0,0.35)' },
+        { transform: 'scale(1)', boxShadow: '0 8px 24px rgba(0,0,0,0.25)' }
+      ], { duration: 700, iterations: 1 });
+      document.getElementById('hasilDom').innerHTML = 'Pulse animation dijalankan';
+      logConsole('Pulse on targetCard');
+    }
+
+    /* ========= 11. localStorage ========= */
+    function saveName(){
+      const n = document.getElementById('saveName').value.trim();
+      if(!n){ alert('Isi nama!'); return; }
+      localStorage.setItem('rasyid_name', n);
+      document.getElementById('hasilLS').innerHTML = `Nama "${n}" disimpan di localStorage`;
+      logConsole('localStorage: saved name ' + n);
+    }
+    function loadName(){
+      const n = localStorage.getItem('rasyid_name');
+      document.getElementById('hasilLS').innerHTML = n ? `Halo ${n}! (dari localStorage)` : 'Belum ada nama tersimpan.';
+      logConsole('localStorage: load name => ' + n);
+    }
+    function removeName(){
+      localStorage.removeItem('rasyid_name');
+      document.getElementById('hasilLS').innerHTML = 'Nama dihapus dari localStorage';
+      logConsole('localStorage: removed name');
+    }
+
+    /* ========= 12. Grafik sederhana (canvas) ========= */
+    let chartData = [75,85,80,90,95];
+    function renderChart(){
+      const canvas = document.getElementById('chartCanvas');
+      const ctx = canvas.getContext('2d');
+      // clear
+      ctx.clearRect(0,0,canvas.width, canvas.height);
+      // background grid
+      ctx.fillStyle = 'rgba(0,0,0,0.06)'; ctx.fillRect(0,0,canvas.width,canvas.height);
+
+      const labels = ['Erik','Dinda','Karen','Meirisca','Sigid'];
+      const max = 100; const padding = 40;
+      const w = canvas.width; const h = canvas.height;
+      const barWidth = (w - padding*2) / labels.length * 0.6;
+      labels.forEach((lab, i) => {
+        const val = chartData[i];
+        const x = padding + i * ((w - padding*2) / labels.length) + ((w - padding*2)/labels.length - barWidth)/2;
+        const barH = ( (val/max) * (h - padding*2) );
+        const y = h - padding - barH;
+        // gradient
+        const grad = ctx.createLinearGradient(x, y, x, h-padding);
+        grad.addColorStop(0, '#ff6fa3'); grad.addColorStop(1, '#7b61ff');
+        ctx.fillStyle = grad;
+        // rounded top rectangle
+        roundRect(ctx, x, y, barWidth, barH, 6, true, false);
+        // label
+        ctx.fillStyle = '#dff6ff';
+        ctx.font = '12px Arial';
+        ctx.textAlign = 'center';
+        ctx.fillText(lab, x + barWidth/2, h - padding + 16);
+        // value
+        ctx.fillText(val, x + barWidth/2, y - 8);
+      });
+      logConsole('Chart dirender dengan data: ' + chartData.join(', '));
+    }
+    function roundRect(ctx, x, y, width, height, radius, fill, stroke) {
+      if (typeof stroke == 'undefined') { stroke = true; }
+      if (typeof radius === 'undefined') { radius = 5; }
+      ctx.beginPath();
+      ctx.moveTo(x + radius, y);
+      ctx.arcTo(x + width, y, x + width, y + height, radius);
+      ctx.arcTo(x + width, y + height, x, y + height, radius);
+      ctx.arcTo(x, y + height, x, y, radius);
+      ctx.arcTo(x, y, x + width, y, radius);
+      ctx.closePath();
+      if (fill) ctx.fill();
+      if (stroke) ctx.stroke();
+    }
+    function randomizeChart(){
+      chartData = chartData.map(_ => Math.floor(Math.random()*41)+60); // 60..100
+      renderChart();
+    }
+
+    /* ========= 13. Jam Digital (header sudah ada) ========= */
+    // updateHeaderClock() sudah menangani header & displayClock
+
+    /* ========= 14. Sound (Web Audio API) ========= */
+    let audioCtx;
+    function ensureAudio(){
+      if(!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    }
+    function playClickSound(){
+      ensureAudio();
+      const o = audioCtx.createOscillator();
+      const g = audioCtx.createGain();
+      o.type = 'square';
+      o.frequency.value = 800;
+      g.gain.value = 0.06;
+      o.connect(g); g.connect(audioCtx.destination);
+      o.start();
+      setTimeout(()=>{ o.stop(); }, 80);
+      logConsole('Play click sound');
+    }
+    function playBeep(){
+      ensureAudio();
+      const o = audioCtx.createOscillator();
+      const g = audioCtx.createGain();
+      o.type = 'sine';
+      o.frequency.value = 440;
+      g.gain.value = 0.08;
+      o.connect(g); g.connect(audioCtx.destination);
+      o.start();
+      setTimeout(()=>{ o.stop(); }, 300);
+      logConsole('Play beep');
+    }
+
+    /* ========= Inisialisasi & event listeners ========= */
+    document.addEventListener('DOMContentLoaded', () => {
+      renderChart();
+      tampilTeman();
+      // ensure targetCard visible initial
+      const t = document.getElementById('targetCard');
+      t.style.opacity = '1'; t.style.display = 'block'; t.style.transform = 'translateY(0)';
+      // load saved name
+      loadName();
+      updateHeaderClock();
+      // nice initial console note
+      logConsole('Halaman siap — selamat belajar, Rasyid!');
+    });
+
+    /* optional: make Enter key submit in some inputs */
+    document.getElementById('inputNilai').addEventListener('keyup', (e)=>{ if(e.key==='Enter') cekIfElse(); });
+    document.getElementById('sisiInput').addEventListener('keyup', (e)=>{ if(e.key==='Enter') fungsiLuasan(); });
+    document.getElementById('calcB').addEventListener('keyup', (e)=>{ if(e.key==='Enter') calc('+'); });
+    document.getElementById('gameGuess').addEventListener('keyup', (e)=>{ if(e.key==='Enter') submitGuess(); });
+    document.getElementById('namaTeman').addEventListener('keyup', (e)=>{ if(e.key==='Enter') tambahTeman(); });
+
+  </script>
 </body>
 </html>
+

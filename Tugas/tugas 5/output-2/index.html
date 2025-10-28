@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Solusi Tugas CSS Komponen</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h2>Solusi Tugas CSS Komponen</h2>
+
+      <!-- 1. Alert -->
+      <div class="card">
+        <h3>1. Dismissible Alert (Positioning)</h3>
+        <div class="alert">
+          <strong>Informasi Penting:</strong>
+          Ini adalah contoh notifikasi sukses. Klik 'X' untuk menutup.
+          <button class="close-btn">&times;</button>
+        </div>
+      </div>
+
+      <!-- 2. Profile Card -->
+      <div class="card">
+        <h3>2. Profile Card dengan Status Badge</h3>
+        <div class="profile-card">
+          <div class="profile-img">
+            <img src="foto profile.jpg" alt="Foto Profil" />
+            <span class="status"></span>
+          </div>
+          <h4>Rasyid nur aisy</h4>
+          <p>UI/UX Designer</p>
+        </div>
+      </div>
+
+      <!-- 3. Pricing Cards -->
+      <div class="card">
+        <h3>3. Responsive Pricing Cards (Flexbox)</h3>
+        <div class="pricing-container">
+          <div class="price-card">
+            <h4>Paket Dasar</h4>
+            <h2>$15</h2>
+            <p>5 Pengguna</p>
+            <p>2 GB Penyimpanan</p>
+            <p>Dukungan Email</p>
+            <button class="btn-blue">Pilih Dasar</button>
+          </div>
+
+          <div class="price-card active">
+            <h4>Paket PRO</h4>
+            <h2>$49</h2>
+            <p><strong>20 Pengguna</strong></p>
+            <p><strong>10 GB Penyimpanan</strong></p>
+            <p>Dukungan Prioritas</p>
+            <button class="btn-red">Beli PRO</button>
+          </div>
+
+          <div class="price-card">
+            <h4>Paket Bisnis</h4>
+            <h2>$99</h2>
+            <p>Tidak Terbatas</p>
+            <p>50 GB Penyimpanan</p>
+            <p>Dukungan 24/7</p>
+            <button class="btn-green">Hubungi Kami</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+

@@ -1,0 +1,181 @@
+/* ========== STYLE.CSS ========== */
+
+
+body {
+  margin: 0; /* menghilangkan jarak default di tepi halaman browser */
+  font-family: 'Poppins', sans-serif; /* mengatur jenis huruf utama seluruh halaman */
+  background-color: #f9fafc; /* memberi warna latar belakang halaman */
+  color: #384250; /* warna teks default (abu tua) */
+}
+
+
+/* HEADER */
+.header {
+  text-align: center; /* isi header di tengah (teks, gambar, dll) */
+  padding: 40px 20px 20px; /* jarak dalam (atas 40px, kanan & kiri 20px, bawah 20px) */
+  background-color: #ffffff; /* warna latar belakang header putih */
+  border-bottom: 2px solid #e0e0e0; /* garis bawah tipis warna abu terang */
+}
+
+/* NAVIGASI */
+.index-nav{
+  display: flex; /* menata link navigasi agar sejajar (horizontal) */
+  justify-content: center; /* membuat item navigasi di tengah */
+  gap: 10px; /* memberi jarak antar tombol/link */
+  margin: 20px 0; /* jarak atas dan bawah area navigasi */
+  background: white; /* latar belakang navigasi putih */
+  padding: 15px 0; /* jarak dalam atas & bawah 15px */
+  text-align: center; /* teks dalam elemen rata tengah */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* bayangan lembut di bawah navigasi */
+}
+
+
+.index-nav a {
+  text-decoration: none; /* menghilangkan garis bawah pada link */
+  color: #1e40af; /* warna teks biru tua */
+  padding: 8px 16px; /* jarak dalam tombol link */
+  border-radius: 30px; /* sudut tombol membulat */
+  background: #f9fafb; /* warna latar belakang tombol */
+  border: 1px solid #d1d5db; /* garis pinggir tombol abu muda */
+  transition: 0.3s; /* efek halus saat hover */
+  color: #1e3a8a; /* warna teks sedikit lebih gelap (biru navy) */
+  font-weight: 600; /* ketebalan teks sedang-tebal */
+  padding: 8px 20px; /* jarak dalam (disesuaikan biar tombol agak lebar) */
+}
+
+
+.index-nav a:hover {
+  background: #e0e7ff; /* saat diarahkan kursor: ubah warna latar jadi biru muda */
+}
+
+.index-nav a.active {
+  background: #1e40af; /* warna tombol aktif (halaman yang sedang dibuka) */
+  color: #fff; /* teks tombol aktif jadi putih */
+  border-color: #1e40af; /* garis pinggir sama dengan warna biru tombol */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*  ========BAGIAN INDEX=======  */
+
+
+.index-logo {
+  width: 90px;
+  height: auto;
+}
+
+
+/* ==== KONTEN UTAMA ========== */
+.index-container {
+  width: 85%;
+  max-width: 900px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding-bottom: 60px;
+}
+
+/* ========== CARD ========== */
+.index-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.index-card-title {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #111827;
+  font-weight: 600;
+  border-left: 4px solid #f2c94c;
+  padding-left: 10px;
+}
+
+/* ========== MINAT SAYA ========== */
+.index-minat {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.index-minat-img {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #ddd;
+}
+
+
+
+/* ====== BAGIAN BIODATA ====== */
+
+
+.card {
+  background-color: white;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin: 0 40px 20px 40px; /* atas kanan bawah kiri */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+
+.card h3 {
+  color: #1e40af;
+  border-left: 5px solid #2563eb;
+  padding-left: 10px;
+  margin-bottom: 1rem;
+}
+
+/* FOTO & TEKS DALAM BIODATA */
+.bio-content {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* memberi jarak antara gambar dan teks */
+}
+
+.bio-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #2563eb;
+  margin-bottom: 15px;
+}
+
+/* FOOTER */
+footer {
+  background-color: #111827;
+  color: #f9fafb;
+  text-align: center;
+  padding: 1rem;
+  border-top: 2px solid #2563eb;
+  margin-top: 2rem;
+  border-radius: 8px 8px 0 0;
+}
+
+footer p {
+  margin: 0;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+}
+
+
+
+

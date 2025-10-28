@@ -1,0 +1,15 @@
+.container {
+  position: relative; /* induk diberi posisi relative */
+  width: 300px;
+  height: 200px;
+  background-color: lightblue;
+}
+
+.kotak {
+  position: absolute; /* anak diberi posisi absolute */
+  top: 20px;
+  left: 30px;
+  width: 100px;
+  height: 100px;
+  background-color: coral;
+}
