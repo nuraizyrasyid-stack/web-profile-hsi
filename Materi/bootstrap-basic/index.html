@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Review Komponen Bootstrap</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="bg-primary text-white text-center py-5">
+    <div class="container">
+      <h1>🌟 Review Komponen Bootstrap</h1>
+      <p class="lead">Kumpulan berbagai fitur keren Bootstrap 5</p>
+      <button class="btn btn-light btn-lg mt-3">Mulai Eksplor</button>
+    </div>
+  </header>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">RasyidDev</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarMenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#buttons">Buttons</a></li>
+          <li class="nav-item"><a class="nav-link" href="#cards">Cards</a></li>
+          <li class="nav-item"><a class="nav-link" href="#alerts">Alerts</a></li>
+          <li class="nav-item"><a class="nav-link" href="#modal">Modal</a></li>
+          <li class="nav-item"><a class="nav-link" href="#form">Form</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== BUTTONS ===== -->
+  <section id="buttons" class="py-5">
+    <div class="container text-center">
+      <h2 class="mb-4">Buttons</h2>
+      <button class="btn btn-primary">Primary</button>
+      <button class="btn btn-secondary">Secondary</button>
+      <button class="btn btn-success">Success</button>
+      <button class="btn btn-danger">Danger</button>
+      <button class="btn btn-warning text-dark">Warning</button>
+      <button class="btn btn-info">Info</button>
+      <button class="btn btn-dark">Dark</button>
+      <button class="btn btn-outline-primary">Outline</button>
+      <br><br>
+      <button class="btn btn-lg btn-success">Large Button</button>
+      <button class="btn btn-sm btn-secondary">Small Button</button>
+    </div>
+  </section>
+
+  <hr>
+
+  <!-- ===== CARDS ===== -->
+  <section id="cards" class="py-5 bg-light">
+    <div class="container">
+      <h2 class="text-center mb-5">Cards</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card shadow-sm">
+            <img src="https://picsum.photos/400/200" class="card-img-top" alt="">
+            <div class="card-body">
+              <h5 class="card-title">Kartu 1</h5>
+              <p class="card-text">Deskripsi singkat tentang konten di dalam card ini.</p>
+              <a href="#" class="btn btn-primary">Lihat Detail</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card text-bg-success text-white">
+            <div class="card-body">
+              <h5 class="card-title">Kartu Hijau</h5>
+              <p class="card-text">Card dengan warna latar dan teks putih.</p>
+              <button class="btn btn-light">Klik Saya</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card border-info">
+            <div class="card-header">Judul Header</div>
+            <div class="card-body">
+              <p class="card-text">Card dengan header dan border warna biru muda.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr>
+
+  <!-- ===== ALERTS & ACCORDION ===== -->
+  <section id="alerts" class="py-5 text-center">
+    <div class="container">
+      <h2 class="mb-4">Alerts & Accordion</h2>
+      <div class="alert alert-success">✅ Berhasil disimpan!</div>
+      <div class="alert alert-warning">⚠️ Periksa kembali datamu.</div>
+      <div class="alert alert-danger">❌ Terjadi kesalahan!</div>
+
+      <div class="accordion mt-4" id="accordionExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+              Apa itu Bootstrap?
+            </button>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse show">
+            <div class="accordion-body">
+              Bootstrap adalah framework CSS untuk membuat website yang responsif dan modern dengan cepat.
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+              Mengapa Menggunakannya?
+            </button>
+          </h2>
+          <div id="collapseTwo" class="accordion-collapse collapse">
+            <div class="accordion-body">
+              Karena mudah digunakan, gratis, dan memiliki banyak komponen siap pakai.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr>
+
+  <!-- ===== MODAL ===== -->
+  <section id="modal" class="py-5 bg-light text-center">
+    <div class="container">
+      <h2 class="mb-4">Modal (Popup)</h2>
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Tampilkan Modal
+      </button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Contoh Modal</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+              Halo Rasyid! 🎉 Ini adalah contoh popup modal Bootstrap.
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+              <button class="btn btn-primary">Simpan</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr>
+
+  <!-- ===== FORM & PROGRESS ===== -->
+  <section id="form" class="py-5">
+    <div class="container">
+      <h2 class="text-center mb-4">Form & Progress Bar</h2>
+      <form class="w-75 mx-auto mb-5">
+        <div class="mb-3">
+          <label for="name" class="form-label">Nama</label>
+          <input type="text" id="name" class="form-control" placeholder="Masukkan nama kamu">
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" id="email" class="form-control" placeholder="Masukkan email">
+        </div>
+        <div class="mb-3">
+          <label for="message" class="form-label">Pesan</label>
+          <textarea id="message" class="form-control" rows="3"></textarea>
+        </div>
+        <button class="btn btn-success">Kirim</button>
+      </form>
+
+      <div class="progress mx-auto w-75">
+        <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 70%;">70%</div>
+      </div>
+    </div>
+  </section>
+
+  <hr>
+
+  <!-- ===== CAROUSEL ===== -->
+  <section class="py-5 bg-dark text-white text-center">
+    <div class="container">
+      <h2 class="mb-4">Carousel Gambar</h2>
+      <div id="carouselExample" class="carousel slide w-75 mx-auto" data-bs-ride="carousel">
+        <div class="carousel-inner rounded">
+          <div class="carousel-item active">
+            <img src="https://picsum.photos/id/1018/800/400" class="d-block w-100 rounded">
+          </div>
+          <div class="carousel-item">
+            <img src="https://picsum.photos/id/1025/800/400" class="d-block w-100 rounded">
+          </div>
+          <div class="carousel-item">
+            <img src="https://picsum.photos/id/1003/800/400" class="d-block w-100 rounded">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <hr>
+
+  <!-- ===== TOAST ===== -->
+  <section class="py-5 text-center">
+    <div class="container">
+      <h2 class="mb-4">Toast (Notifikasi kecil)</h2>
+      <button class="btn btn-primary" id="liveToastBtn">Tampilkan Toast</button>
+
+      <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="liveToast" class="toast" role="alert">
+          <div class="toast-header">
+            <strong class="me-auto">Bootstrap</strong>
+            <small>Baru saja</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+          </div>
+          <div class="toast-body">
+            Halo Rasyid! Ini adalah contoh notifikasi kecil (toast) 🎉
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="bg-primary text-white text-center py-4">
+    <p>© 2025 Dibuat oleh Rasyid dengan ❤️ & Bootstrap</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Toast trigger
+    const toastTrigger = document.getElementById('liveToastBtn')
+    const toastLive = document.getElementById('liveToast')
+    if (toastTrigger) {
+      toastTrigger.addEventListener('click', () => {
+        const toast = new bootstrap.Toast(toastLive)
+        toast.show()
+      })
+    }
+  </script>
+</body>
+</html>
+
+
